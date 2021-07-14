@@ -6,14 +6,16 @@ mongoose.connect('mongodb://localhost:27017/FruitsDB', {
 
 
 
-const Cat = mongoose.model('Cat', {
-  name: String
-});
+// const Cat = mongoose.model('Cat', {
+//   name: String
+// });
+//
+// const kitty = new Cat({
+//   name: 'Zildjian'
+// });
+// kitty.save().then(() =>
 
-const kitty = new Cat({
-  name: 'Zildjian'
-});
-kitty.save().then(() => console.log('Hello Darwish'));
+console.log('Hello Darwish');
 
 // creating new  schema
 
@@ -26,7 +28,7 @@ const fruitSchema = new mongoose.Schema({
 
 const Fruit = mongoose.model("Fruit", fruitSchema);
 
-const fruit = new Fruit({
+const liin = new Fruit({
 
   name: "Liin balbeemo",
   rating: 4,
@@ -38,7 +40,7 @@ const avacado = new Fruit({
 
   name: "avacado",
   rating: 3,
-  review: "Fatty" v  v 
+  review: "Fatty one "
 
 });
 const banana = new Fruit({
@@ -56,31 +58,47 @@ const tufax = new Fruit({
 
 });
 
-Fruit.insertMany([avacado, banana, tufax], function(err) {
-  if (err) {
-    console.log(err);
-
-  } else {
-    console.log("Successfully connected to Fruits DataBase");
-  }
-})
+// Fruit.insertMany([avacado, banana, tufax], function(err) {
+//   if (err) {
+//     console.log(err);
+//
+//   } else {
+//     console.log("Successfully connected to Fruits DataBase");
+//   }
+// })
 //fruit.save();
 
+// finding collections
+
+Fruit.find(function(err, fruits){
+  if (err){
+    console.log(err);
+
+  }else
+  {
+    mongoose.connection.close();
+
+    fruits.forEach(function (fruit) {
+      console.log(fruit.name);
+    });
+  }
+
+});
 
 //challenge
-const PeopleSchema = new mongoose.Schema({
-
-  name: String,
-  age: Number
-
-});
-
-const Person = mongoose.model("Person", PeopleSchema);
-
-const person = new Person({
-
-  name: "Ali",
-  age: 21
-});
-
-person.save();
+// const PeopleSchema = new mongoose.Schema({
+//
+//   name: String,
+//   age: Number
+//
+// });
+//
+// const Person = mongoose.model("Person", PeopleSchema);
+//
+// const person = new Person({
+//
+//   name: "Ali",
+//   age: 21
+// });
+//
+// person.save();
